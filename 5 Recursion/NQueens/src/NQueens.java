@@ -3,9 +3,9 @@ public class NQueens {
 
 	/**
 	 * Checks that the specified position is safe or not for placing a Queen
-	 * @param board      
-	 * @param row        index of row where queen is placed
-	 * @param column     index of column where queen is placed
+	 * @param board the chess board     
+	 * @param row index of row where queen is supposed to be placed
+	 * @param column index of column where queen is supposed to be placed
 	 * @return returns true if specified position is safe or false if specified position is not safe
 	 */
 	public boolean isSafe(int[][] board, int row, int column) {
@@ -37,12 +37,12 @@ public class NQueens {
 	}
 
 	/**
-	 * The N Queen is the problem of placing N chess queens on an N×N chess board so
+	 * The N Queen is the problem of placing N chess queens on an NÃ—N chess board so
 	 * that no two queens attack each other.
 	 * @param board
 	 * @param startRow
 	 * @param dimensions of chess board
-	 * @return boolean value, true if queens can be placed, false if they can't be placed
+	 * @return boolean value, true if N queens can be placed, false if they can't be placed
 	 */
 
 	public boolean solveNQueens(int[][] board, int startRow, int dimensions) {
@@ -66,8 +66,7 @@ public class NQueens {
 
 	/**
 	 * Prints the chess board where Q indicates a queen and 0 indicates empty places
-	 * 
-	 * @param dimensionOfChessBoard
+	 * @param dimensions of chessboard
 	 */
 	void printChessBoard(int dimensions) {
 		System.out.println("Board type: " + dimensions + " * " + dimensions);
