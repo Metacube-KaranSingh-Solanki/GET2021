@@ -12,7 +12,7 @@ public class Search {
 	
 	
 	/**
-	 * Finds a value in an array using Binary Search algorithm. Helper method of binarySearch()
+	 * Finds a value in an array using Binary Search algorithm.
 	 * @param arr Array in which value to be searched, Requires array to be sorted
 	 * @param value The value to be searched
 	 * @return index such that arr[index] = value, -1 if value not found
@@ -58,5 +58,4 @@ public class Search {
 		else
 			return binarySearchHelper(arr, start, mid - 1, value);
 	}
-
 }
