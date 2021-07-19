@@ -2,14 +2,15 @@
 public final class Poly {
 	/**
 	 * Private class to define the structure of the array (A single term)
+	 * It is static because we're accessing the object of this class in a static methods
 	 */
-	private static final class Term{
-		int deg;
-		int coeff;
+		private static class Term{	
+		int degree;
+		int coefficient;
 		
-		private Term(int deg, int coeff) {
-			this.deg = deg;
-			this.coeff = coeff;
+		private Term(int degree, int coefficient) {
+			this.degree = degree;
+			this.coefficient = coefficient;
 		}
 		
 		/** Compare the two terms
@@ -18,7 +19,7 @@ public final class Poly {
 		 * @return true if two terms are equal
 		 */
 		private static boolean compareTo(Term t1, Term t2) {
-			return (t1.deg==t2.deg) && (t1.coeff==t2.coeff)? true: false;
+			return (t1.degree==t2.degree) && (t1.coefficient==t2.coefficient)? true: false;
 		}
 		
 	}
@@ -75,7 +76,7 @@ public final class Poly {
 		Term term;
 		for(int i=0; i<size();i++) {
 			term = polynom[i];
-			sum += term.coeff * Math.pow(value,term.deg);
+			sum += term.coefficient * Math.pow(value,term.degree);
 		}
 		return sum;
 	}
@@ -96,15 +97,15 @@ public final class Poly {
 			term1 = p1.polynom[i];
 			term2 = p2.polynom[j];
 
-			if (term1.deg == term2.deg) {
-				poly[k] = new Term(term1.deg, term1.coeff + term2.coeff);
+			if (term1.degree == term2.degree) {
+				poly[k] = new Term(term1.degree, term1.coefficient + term2.coefficient);
 				i++;
 				j++;
-			} else if (term1.deg < term2.deg) {
-				poly[k] = new Term(term1.deg, term1.coeff);
+			} else if (term1.degree < term2.degree) {
+				poly[k] = new Term(term1.degree, term1.coefficient);
 				i++;
 			} else {
-				poly[k] = new Term(term2.deg, term2.coeff);
+				poly[k] = new Term(term2.degree, term2.coefficient);
 				j++;
 			}
 			k++;
@@ -114,14 +115,14 @@ public final class Poly {
 		while (j < p2.size()) {
 			System.out.println(j);
 			term2 = p2.polynom[j];
-			poly[k] = new Term(term2.deg, term2.coeff);
+			poly[k] = new Term(term2.degree, term2.coefficient);
 			j++;
 			k++;
 		}
 
 		while (i < p1.size()) {
 			term1 = p1.polynom[i];
-			poly[k] = new Term(term1.deg, term1.coeff);
+			poly[k] = new Term(term1.degree, term1.coefficient);
 			i++;
 			k++;
 		}
@@ -136,9 +137,9 @@ public final class Poly {
 		for(int i=0;i<this.size();i++) {
 			
 			if(i<this.size()-1) {
-				System.out.print(polynom[i].coeff +"x^"+polynom[i].deg + " + ");
+				System.out.print(polynom[i].coefficient +"x^"+polynom[i].degree + " + ");
 			} else {
-				System.out.print(polynom[i].coeff +"x^"+polynom[i].deg);
+				System.out.print(polynom[i].coefficient +"x^"+polynom[i].degree);
 			}
 		}
 	}
@@ -156,7 +157,7 @@ public final class Poly {
 		{
 			boolean flag = true;
 			for(int j=i+1;j<p2.length;j++) {
-				if(p1[i].deg==p2[j].deg) {
+				if(p1[i].degree==p2[j].degree) {
 						count++;
 						break;
 				}
@@ -183,7 +184,7 @@ public final class Poly {
 			for(int j=0; j<p2.size(); j++) {
 				term2 = p2.polynom[j];
 				// i+j to add same degree coefficient
-				coff[i+j] += term1.coeff*term2.coeff;
+				coff[i+j] += term1.coefficient*term2.coefficient;
 			}
 		}
 		
@@ -194,7 +195,7 @@ public final class Poly {
 	 * @return the degree of the polynomial
 	 */
 	public int degree() {
-		return polynom[size()-1].deg;
+		return polynom[size()-1].degree;
 	}
 	
 	/** Compare two polynomials
@@ -218,7 +219,6 @@ public final class Poly {
 		}
 		return b;
 	}
-	
 	
 	/** Getter to get term[] array of polynomial
 	 * @return Term[] array
