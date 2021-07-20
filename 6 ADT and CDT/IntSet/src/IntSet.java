@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -98,7 +99,7 @@ public class IntSet {
 	}
 
 	public int[] getElements() {
-		Arrays.copyOf(set, set.length);
+		return Arrays.copyOf(set, set.length);
 	}
 
 	private int[] isValidInput(int[] inputArray){
