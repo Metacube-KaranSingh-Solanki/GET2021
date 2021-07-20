@@ -175,7 +175,7 @@ public final class Poly {
 	 */
 	public static Poly multiplyPoly(Poly p1, Poly p2) {
 		Term term1, term2;
-		int len = p1.size() + p2.size() + 1;
+		int len = p1.size() * p2.size();
 		
 		int coff[] = new int[len]; 
 		
@@ -184,7 +184,7 @@ public final class Poly {
 			for(int j=0; j<p2.size(); j++) {
 				term2 = p2.polynom[j];
 				// i+j to add same degree coefficient
-				coff[i+j] += term1.coefficient*term2.coefficient;
+				coff[term1.degree + term2.degree] += term1.coefficient*term2.coefficient;
 			}
 		}
 		
