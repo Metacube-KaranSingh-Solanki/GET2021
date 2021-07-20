@@ -101,7 +101,7 @@ public class IntSet {
 	
 
 	public int[] getElements() {
-		return set;
+		Arrays.copyOf(set, set.length);
 	}
 
 	private int[] isValidInput(int[] inputArray){
