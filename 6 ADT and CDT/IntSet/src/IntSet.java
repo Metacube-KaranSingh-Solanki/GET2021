@@ -97,9 +97,6 @@ public class IntSet {
 		System.out.println();
 	}
 
-	
-	
-
 	public int[] getElements() {
 		Arrays.copyOf(set, set.length);
 	}
