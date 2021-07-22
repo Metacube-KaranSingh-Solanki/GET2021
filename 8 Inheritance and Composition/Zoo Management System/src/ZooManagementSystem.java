@@ -5,7 +5,6 @@ import java.util.List;
 public class ZooManagementSystem {
 
 	List<Zone> zones = new ArrayList<>();
-	List<Animal> animals = new ArrayList<>(); //Stores the list of all the animals of the zoo. 
 	private final int capacity;
 	private int cageCapacity, zoneCapacity;
 
@@ -34,7 +33,6 @@ public class ZooManagementSystem {
 				for (Cage cage : zone.getCages()) {
 					if (cage.getSubCategory() == animal.subCategory && cage.isAvailble()) {
 						cage.addAnimal(animal);
-						animals.add(animal);
 						return true;
 					}
 				}
@@ -42,7 +40,6 @@ public class ZooManagementSystem {
 					Cage cage = new Cage(cageCapacity, animal.subCategory);
 					zone.addCage(cage);
 					cage.addAnimal(animal);
-					animals.add(animal);
 					return true;
 				}
 			}
@@ -54,7 +51,6 @@ public class ZooManagementSystem {
 			zones.add(zone);
 			zone.addCage(cage);
 			cage.addAnimal(animal);
-			animals.add(animal);
 			isSuccess = true;
 		}
 		return isSuccess;
@@ -66,32 +62,18 @@ public class ZooManagementSystem {
 	 * @return true if animal get added
 	 */
 	public boolean deathOfAnimal(int id) {
-		Animal animal = null;
-		for (Animal a : animals) {
-			if (a.getId() == id)
-				animal = a;
-		}
-
-		if (animal == null)
-			throw new AssertionError("Animal not present");
-		boolean isSuccess = false;
-
 		for (Zone zone : zones) {
-			if (zone.getCategory() == animal.getCategory()) {
-				for (Cage cage : zone.getCages()) {
-					if (cage.getSubCategory() == animal.subCategory) {
-						for (Animal a : cage.getAnimals()) {
-							if (a.getId() == id) {
-								cage.removeAnimal(animal);
-								return true;
-							}
-						}
+			for (Cage cage : zone.getCages()) {
+				for (Animal a : cage.getAnimals()) {
+					if (a.getId() == id) {
+						cage.removeAnimal(a);
+						return true;
 					}
 				}
 			}
 		}
-
-		return isSuccess;
+		
+		throw new AssertionError("Animal with this id not present in zoo.");
 	}
 
 	/**

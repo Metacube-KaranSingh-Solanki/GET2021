@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 public class ZMSTest {
 	/** 2 Zones and 2 Cages each through out has been consider while adding the animal **/
 	ZooManagementSystem zms = new ZooManagementSystem(3);
-	Animal lion1 = new Lion(3, 40);			// For testing the death (removal) of animal 
+	Animal lion1 = new Lion(3, 40);			// For testing purpose
 	
 	@BeforeEach
 	public void testCreateZoo() {
 		zms.setCapacity(2, 2);
-		zms.addToZoo(lion1); //Zone1
+		zms.addToZoo(new Lion(4, 45)); //Zone1
 		zms.addToZoo(new Crocodile(1, 10)); //Zone2
 		zms.addToZoo(new Lion(5, 45)); //Zone1
 		zms.addToZoo(new Crocodile(2, 15)); //Zone2
 		zms.addToZoo(new Peacock(1, 15)); //Zone3
-		zms.addToZoo(new Lion(5, 45)); //Zone1
+		zms.addToZoo(lion1); //Zone1
 		zms.addToZoo(new Lion(5, 45)); //Zone1
 		zms.addToZoo(new Peacock(1, 15)); //Zone3
 	}
