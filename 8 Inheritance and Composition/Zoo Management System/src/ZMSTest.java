@@ -83,6 +83,7 @@ public class ZMSTest {
 	 */
 	@Test
 	public void testRemoveLionFail() {
-		assertThrows(AssertionError.class, () -> {zms.deathOfAnimal(999);});
+		int invalidID = 999;
+		assertThrows(AssertionError.class, () -> {zms.deathOfAnimal(invalidID);});
 	}
 }	
